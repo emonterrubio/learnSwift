@@ -18,7 +18,7 @@ print()
 
 // Which students aren’t taking any language classes
 var noLanguage = german101.subtracting(spanish101)
-var noLangText = "Students who are not taking any languages: "
+var noLangText = "Students not taking any languages are: "
 for (i, student) in noLanguage.enumerated() {
   if i == noLanguage.count-1 {
     noLangText.append("and \(student)")
@@ -31,7 +31,7 @@ print()
 
 // Which students are taking either spanish101 or german101, but not both
 var spanishOrGerman = spanish101.symmetricDifference(german101)
-var spanishOrGermanText = "Students who are taking only one lanuage: "
+var spanishOrGermanText = "Students taking only one language are: "
 for (i, student) in spanishOrGerman.enumerated() {
   if i == spanishOrGerman.count-1 {
     spanishOrGermanText.append("and \(student)")
@@ -44,7 +44,7 @@ print()
 
 // Language award to any student who takes all three of the following classes: spanish101, german101, and englishLiterature
 var languageAwardWinners = spanish101.intersection(german101).intersection(englishLiterature)
-var languageWinnersText = "Students who are language award winners: "
+var languageWinnersText = "Language award winner students are: "
 for (i, student) in languageAwardWinners.enumerated() {
   if i == languageAwardWinners.count-1 {
     languageWinnersText.append("and \(student)")
@@ -65,14 +65,23 @@ for item in classSet {
     sevenPlus += 1
   }
 }
-print("There are \(sevenPlus) classes taht have 7 or more students")
+print("There are \(sevenPlus) classes that have 7 or more students")
 print()
 
 // "Skyla" has transferred to a new school. Remove her from any classes she is currently enrolled in.
 allStudents.remove("Skyla")
 
-// Students from the computerScience class and advancedCalculus class are going on a field trip
+// Students from the computerScience class and advancedCalculus that class are going on a field trip
 var fieldTrip = advancedCalculus.union(computerScience)
+var fieldTripText = "Students from CS and Calculus going on the field trip are: "
+for (i, student) in fieldTrip.enumerated() {
+  if i == fieldTrip.count-1 {
+    fieldTripText.append("and \(student)")
+  } else {
+    fieldTripText.append(student + ", ")
+  }
+}
+print(fieldTripText)
 
 // The day of the field trip, there is a test in german101.
 var notGoing = fieldTrip.subtracting(german101)

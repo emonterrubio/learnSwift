@@ -1,6 +1,7 @@
 // message to encode and message to decode
-var englishText = "This is a secret message"
-var secretMessage = ".... --- .-- -.. -.--   .--. .- .-. - -. . .-."
+var englishText = "This is a message coded in morse."
+var secretMessage = "--. ..- . ... ...   .-- .... .- -   - .... .. ...   -- . ... ... .- --. .   .. ...   .- -... --- ..- - .-.-.-   -.-- --- ..-   -- .- -.--   - .... .. -. -.-   .. -   .. ...   .- .-- . ... --- -- . .-.-.-   ..   - .... .. -. -.-   ... ---   - --- --- .-.-.
+"
 
 // create a dictionary with letters as keys and morse code counterparts as values
 var letterToMorse: [String: String] = [
@@ -42,18 +43,18 @@ var morseText = ""
 
 // Loop through each character in englishText
 for element in englishText {
- // All letters should lower case
+ // All letters should first be lower cased
  let lowerElement = element.lowercased()
  // Check if the value exists in the dictionary
  if let morseChar = letterToMorse["\(lowerElement)"] {
    // Append the letter to morseText and a space to morseText because each letter is separated by a single space in morse code
    morseText += morseChar + " "
  } else {
-   // Append 3 spaces to morseText because each word in a morse code message is separated by three spaces
-   morseText += "   "
+   // Append 2 spaces to morseText because each word in a morse code message is separated by three spaces
+   morseText += "  "
  }
 }
-print("Message encoded in morse:\(morseText)")
+print("Message encoded in morse: \(morseText)")
 
 // DECODING A MESSAGE
 var decodedMessage = ""
@@ -109,6 +110,24 @@ for morseValue in morseCodeArray {
    decodedMessage.append(" ")
  }
 }
-print("Message decoded from morse: \(decodedMessage)")
-// Message encoded in morse:- .... .. ...    .. ...    .-    ... . -.-. .-. . -    -- . ... ... .- --. . 
-// Message decoded from morse: howdy partner
+
+// Create a new array and split each string
+let sentenceArray = decodedMessage.components(separatedBy: ". ")
+var joinedSentences = ""
+
+// Loop through each string in the sentenceArray
+for (i, sentence) in sentenceArray.enumerated() {
+   // Uppercase the first letter of each array item, lowercase the rest and joined them
+   var capSentence = sentence.prefix(1).uppercased() + sentence.lowercased().dropFirst()
+   // Find the end of each array item and add a period or not
+   if i == sentenceArray.count-1 {
+       joinedSentences += capSentence
+   } else {
+       joinedSentences += capSentence + ". "
+   }
+}
+
+print("Message decoded from morse: \(joinedSentences)")
+
+// Message encoded in morse: - .... .. ...   .. ...   .-   -- . ... ... .- --. .   -.-. --- -.. . -..   .. -.   -- --- .-. ... . .-.-.- 
+// Message decoded from morse: Guess what this message is about. You may think it is awesome. I think so too.

@@ -1,0 +1,46 @@
+struct Exercise {
+   var name: String
+   let muscleGroups: [String]
+   var reps: Int
+   var sets: Int
+   var totalReps: Int
+
+   init(name: String, muscleGroups: [String], reps: Int, sets: Int) {
+       self.name = name
+       self.muscleGroups = muscleGroups
+       self.reps = reps
+       self.sets = sets
+       self.totalReps = sets * reps
+   }
+}
+
+var pushUp = Exercise(name: "Push Up", muscleGroups: ["Triceps", "Chest", "Shoulders"], reps: 20, sets: 3)
+var sitUps = Exercise(name: "Sit up", muscleGroups: ["Abdominal", "Obliques"], reps: 30, sets: 3)
+var squats = Exercise(name: "Squat", muscleGroups: ["Quads", "Adductor", "Gluteus"], reps: 20, sets: 4)
+
+struct Regimen {
+ var dayOfWeek: String
+ let exercises: [Exercise]
+
+ init(dayOfWeek: String, exercises:[Exercise]) {
+   self.dayOfWeek = dayOfWeek
+   self.exercises = exercises
+ }
+ func printExercisePlan() {
+   print("Today is \(self.dayOfWeek) and the plan is to:")
+   for exercise in exercises {
+     print("Do \(exercise.sets) sets of \(exercise.reps) \(exercise.name)s.")
+     print("That's a total of \(exercise.totalReps) \(exercise.name)s.")
+   }
+ }
+}
+
+var mondayRegimen = Regimen(dayOfWeek: "Monday", exercises: [pushUp, sitUps, squats])
+mondayRegimen.printExercisePlan()
+// Today is Monday and the plan is to:
+// Do 3 sets of 20 Push Ups.
+// That's a total of 60 Push Ups.
+// Do 3 sets of 30 Sit ups.
+// That's a total of 90 Sit ups.
+// Do 4 sets of 20 Squats.
+// That's a total of 80 Squats.

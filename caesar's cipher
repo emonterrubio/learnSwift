@@ -1,0 +1,31 @@
+// the 'Character' type stores individual characters whereas the 'String' type stores a sequence of characters
+var alphabet: [Character] = ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+
+// this is the secret message to be cyphered
+var secretMessage = "THE QUICK BROWN FOX JUMPS OVER THE LAZY DOG"
+
+// lower case the secret message first
+var secretMessageCased = secretMessage.lowercased()
+
+// convert the 'secretMessageCased' string to an array of characters
+var message = Array(secretMessageCased)
+
+// loop through 'message'
+for i in 0 ..< message.count {
+
+ // nested loop that compares each of the characters in 'message' with each of the characters in the 'alphabet'
+ for j in 0 ..< alphabet.count {
+
+   // If the current character in 'message' is equal to the current character in 'alphabet', then replace the current character in 'message' with the character that’s three places to the right in 'alphabet', and exit out of the loop
+   if message[i] == alphabet[j] {
+     // keep it in range, alphabet only has 26 characters
+     message[i] = alphabet[(j + 3) % 26]
+     break
+   }
+ }
+}
+
+// convert the 'message' array back to a string
+let cypherMessage = String(message)
+print(secretMessage)
+print(cypherMessage)

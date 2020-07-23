@@ -1,0 +1,16 @@
+var input = "The Shire, humble home of the hobbits"
+var output = ""
+
+for char in input {
+ let lowerChar = char.lowercased()
+ switch lowerChar {
+   case "a", "i", "o":
+     output += lowerChar.uppercased()
+   case "e", "u":
+     // use ternary operator to determine which letters are added
+     output += lowerChar == "e" ? "EE" : "UU"
+   default:
+     continue
+ }
+}
+print(output)

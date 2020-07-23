@@ -1,0 +1,17 @@
+// var text = ["h", "e", "l", "l", "o"]
+var text = ["l", "e", "v", "e", "l"]
+// var text = ["a", "n", "n", "a"]
+
+var reversed = [String]() // empty array for the new reversed string
+var counter = text.count - 1  // start on the text array backwards
+
+while (counter >= 0) {
+ reversed.append(text[counter]) // add each letter to the new array
+ counter -= 1 // move to the next letter backwards
+}
+
+if text == reversed {
+ print("\(text) is a palindrome!")
+} else {
+ print("\(text) is not a palindrome")
+}

@@ -1,0 +1,26 @@
+var mixtape = [String]() //array where songs are added
+mixtape.append("The Weeknd - Blinding Lights")
+mixtape.append("Vertical Horizon - Everything You Want")
+mixtape.append("Harry Styles - Adore You")
+mixtape.append("Carly Rae Jepsenm - Call Me Maybe")
+mixtape.append("Christina Aguilera - Candyman")
+mixtape.append("Lady Gaga - Stupid Love")
+mixtape.append("MatchBox Twenty - How Far We've Come")
+mixtape.append("Dear Evan - Waving Through a Window")
+mixtape.append("The Goo Goo Dolls - Slide")
+mixtape.append("Nappy Roots - Good Day")
+mixtape.append("Barenaked Ladies - One Week", at: 0)
+mixtape.append("The Beatles - Help", at: 1)
+
+// Side A
+print("Side A:\n")
+for i in 0 ..< mixtape.count/2 { // 0..6
+ print("\(i+1). \(mixtape[i])") // index # + song
+}
+print() // empty line
+
+//Side B
+print("Side B:\n")
+for i in mixtape.count/2 ..< mixtape.count { // 7..12
+ print("\(i+1). \(mixtape[i])") // index # + song
+}
